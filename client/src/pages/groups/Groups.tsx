@@ -4,10 +4,13 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { trpc } from "@/lib/trpc";
 import { Users, UserPlus } from "lucide-react";
 import { useAuth } from "@/_core/hooks/useAuth";
+import { CreateGroupModal } from "@/components/modals/CreateGroupModal";
+import { useState } from "react";
 
 export default function Groups() {
   const { user } = useAuth();
   const { data: groups, isLoading } = trpc.groups.getAll.useQuery();
+  const [createGroupModalOpen, setCreateGroupModalOpen] = useState(false);
 
   return (
     <DashboardLayout>
@@ -23,12 +26,17 @@ export default function Groups() {
             </p>
           </div>
           {user?.role === 'admin' && (
-            <Button>
+            <Button onClick={() => setCreateGroupModalOpen(true)}>
               <UserPlus className="h-4 w-4 mr-2" />
               Novo Grupo
             </Button>
           )}
         </div>
+        
+        <CreateGroupModal 
+          open={createGroupModalOpen} 
+          onOpenChange={setCreateGroupModalOpen} 
+        />
 
         {isLoading ? (
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -85,7 +93,7 @@ export default function Groups() {
                 Nenhum grupo cadastrado ainda
               </p>
               {user?.role === 'admin' && (
-                <Button className="mt-4">
+                <Button className="mt-4" onClick={() => setCreateGroupModalOpen(true)}>
                   <UserPlus className="h-4 w-4 mr-2" />
                   Criar Primeiro Grupo
                 </Button>

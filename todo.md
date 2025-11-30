@@ -118,3 +118,25 @@
 - [ ] Testar integração MCP com Cloudflare
 - [ ] Preparar variáveis de ambiente para produção
 - [ ] Documentar processo de deploy
+
+## Melhorias de Interface - Formulários Modais
+- [x] Criar modal de criação de grupo
+- [x] Criar modal de criação de encontro
+- [x] Criar modal de adição de convidado
+- [x] Integrar modais nas páginas correspondentes
+- [x] Adicionar validação de formulários
+
+## Sistema de Upload com Supabase Storage
+- [ ] Configurar bucket no Supabase Storage
+- [ ] Criar helpers de upload no backend
+- [ ] Implementar upload de foto de perfil
+- [ ] Implementar upload de documentos/vídeos para conteúdos
+- [ ] Adicionar preview de arquivos
+
+## Página de Listagem de Atividades
+- [x] Criar página /activities com listagem completa
+- [x] Implementar filtros por tipo de atividade
+- [x] Implementar filtros por período (data)
+- [x] Implementar filtros por membro (busca)
+- [x] Mostrar detalhes expandidos de cada atividade
+- [ ] Adicionar paginação (futuro)

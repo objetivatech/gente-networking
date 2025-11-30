@@ -212,11 +212,11 @@ export const appRouter = router({
   meetings: router({
     create: facilitatorProcedure
       .input(z.object({
-        groupId: z.number(),
+        groupId: z.number().optional(),
         title: z.string(),
         description: z.string().optional(),
         meetingDate: z.date(),
-        location: z.string().optional(),
+        location: z.string(),
       }))
       .mutation(async ({ ctx, input }) => {
         await db.createMeeting({
@@ -310,6 +310,21 @@ export const appRouter = router({
       }),
   }),
 
+  // ============ UPLOAD ============
+  upload: router({
+    getUploadUrl: protectedProcedure
+      .input(z.object({
+        fileName: z.string(),
+        fileType: z.string(),
+        bucket: z.enum(['avatars', 'documents', 'videos']),
+      }))
+      .mutation(async () => {
+        // Return a presigned URL for direct upload from frontend
+        // For now, we'll use a simple approach where frontend sends base64
+        return { uploadUrl: '/api/upload', method: 'POST' };
+      }),
+  }),
+  
   // ============ NOTIFICATIONS ============
   notifications: router({
     getMyNotifications: protectedProcedure

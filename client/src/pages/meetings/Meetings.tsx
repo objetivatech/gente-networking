@@ -6,10 +6,16 @@ import { Calendar, MapPin, Plus, Users } from "lucide-react";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
+import { CreateMeetingModal } from "@/components/modals/CreateMeetingModal";
+import { AddGuestModal } from "@/components/modals/AddGuestModal";
+import { useState } from "react";
 
 export default function Meetings() {
   const { user } = useAuth();
   const { data: meetings, isLoading } = trpc.meetings.getAll.useQuery();
+  const [createMeetingModalOpen, setCreateMeetingModalOpen] = useState(false);
+  const [addGuestModalOpen, setAddGuestModalOpen] = useState(false);
+  const [selectedMeetingId, setSelectedMeetingId] = useState<number | undefined>();
 
   const canCreateMeeting = user?.role === 'admin' || user?.role === 'facilitator';
 
@@ -27,12 +33,23 @@ export default function Meetings() {
             </p>
           </div>
           {canCreateMeeting && (
-            <Button>
+            <Button onClick={() => setCreateMeetingModalOpen(true)}>
               <Plus className="h-4 w-4 mr-2" />
               Novo Encontro
             </Button>
           )}
         </div>
+        
+        <CreateMeetingModal 
+          open={createMeetingModalOpen} 
+          onOpenChange={setCreateMeetingModalOpen} 
+        />
+        
+        <AddGuestModal 
+          open={addGuestModalOpen} 
+          onOpenChange={setAddGuestModalOpen}
+          meetingId={selectedMeetingId}
+        />
 
         {isLoading ? (
           <div className="space-y-4">
