@@ -153,7 +153,6 @@ export const appRouter = router({
             type: input.type,
             title: `Nova ${input.type === 'referral' ? 'indicação' : input.type === 'business' ? 'negócio' : input.type === 'meeting' ? 'reunião' : 'depoimento'}`,
             message: `${ctx.user.name} registrou uma atividade relacionada a você.`,
-            relatedType: 'activity',
           });
         }
         
@@ -219,8 +218,11 @@ export const appRouter = router({
         meetingDate: z.date(),
         location: z.string().optional(),
       }))
-      .mutation(async ({ input }) => {
-        await db.createMeeting(input);
+      .mutation(async ({ ctx, input }) => {
+        await db.createMeeting({
+          ...input,
+          createdBy: ctx.user.id,
+        });
         return { success: true };
       }),
     

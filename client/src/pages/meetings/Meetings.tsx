@@ -51,29 +51,29 @@ export default function Meetings() {
         ) : meetings && meetings.length > 0 ? (
           <div className="space-y-4">
             {meetings.map((meeting) => {
-              const meetingDate = new Date(meeting.meetingDate);
+              const meetingDate = new Date(meeting.meeting_date);
               const isPast = meetingDate < new Date();
               
               return (
                 <Card key={meeting.id} className={`hover:shadow-lg transition-shadow ${
-                  meeting.isCompleted ? 'opacity-75' : ''
+                  meeting.is_completed ? 'opacity-75' : ''
                 }`}>
                   <CardHeader>
                     <div className="flex items-start justify-between">
                       <div className="flex-1">
                         <CardTitle className="flex items-center gap-2">
                           {meeting.title}
-                          {meeting.isCompleted && (
+                          {meeting.is_completed && (
                             <span className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded font-normal">
                               Realizado
                             </span>
                           )}
-                          {!meeting.isCompleted && isPast && (
+                          {!meeting.is_completed && isPast && (
                             <span className="text-xs bg-yellow-100 text-yellow-700 px-2 py-1 rounded font-normal">
                               Pendente
                             </span>
                           )}
-                          {!meeting.isCompleted && !isPast && (
+                          {!meeting.is_completed && !isPast && (
                             <span className="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded font-normal">
                               Agendado
                             </span>
@@ -109,7 +109,7 @@ export default function Meetings() {
                           <Users className="h-4 w-4 mr-2" />
                           Ver Convidados
                         </Button>
-                        {canCreateMeeting && !meeting.isCompleted && (
+                        {canCreateMeeting && !meeting.is_completed && (
                           <Button variant="outline" size="sm">
                             Editar
                           </Button>

@@ -90,25 +90,25 @@ export default function Leaderboard() {
                         
                         <div className="flex items-center gap-4 mt-2 text-sm text-muted-foreground">
                           <span>
-                            🤝 {member.referralCount} indicações
+                            🤝 {member.referral_count} indicações
                           </span>
                           <span>
-                            💼 {member.businessCount} negócios
+                            💼 {member.business_count} negócios
                           </span>
                           <span>
-                            ☕ {member.meetingCount} reuniões
+                            ☕ {member.meeting_count} reuniões
                           </span>
                           <span>
-                            ⭐ {member.testimonialCount} depoimentos
+                            ⭐ {member.testimonial_count} depoimentos
                           </span>
                         </div>
 
-                        {member.totalBusinessValue > 0 && (
+                        {member.total_business_value > 0 && (
                           <p className="text-sm font-semibold text-green-600 mt-1">
                             {new Intl.NumberFormat('pt-BR', {
                               style: 'currency',
                               currency: 'BRL',
-                            }).format(member.totalBusinessValue / 100)}
+                            }).format(member.total_business_value / 100)}
                             {' '}em negócios
                           </p>
                         )}
@@ -116,7 +116,7 @@ export default function Leaderboard() {
 
                       <div className="text-right">
                         <p className="text-2xl font-bold text-primary">
-                          {member.totalPoints}
+                          {member.total_points}
                         </p>
                         <p className="text-xs text-muted-foreground">pontos</p>
                       </div>

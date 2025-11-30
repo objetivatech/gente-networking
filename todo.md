@@ -98,3 +98,23 @@
 - [x] Corrigir erro de aninhamento de tags <a> na página inicial
 - [x] Corrigir queries tRPC retornando HTML em vez de JSON
 - [x] Verificar roteamento do servidor tRPC
+## Migração para Supabase
+- [x] Extrair credenciais do Supabase das instruções
+- [x] Configurar conexão com Supabase Database
+- [x] Reescrever db.ts para usar Supabase Client
+- [x] Reescrever todos os testes para Supabase
+- [x] Corrigir erros de TypeScript
+- [x] Testar todas as funcionalidades com Supabase
+- [ ] Configurar Supabase Storage para arquivos (futuro)## Documentação do Sistema
+- [x] Criar guia completo para administradores
+- [x] Criar guia para facilitadores
+- [x] Criar guia para membros
+- [ ] Documentar processo de deploy no Cloudflare
+- [ ] Criar FAQ e troubleshooting
+
+## Preparação para Cloudflare Pages
+- [ ] Verificar compatibilidade do projeto com Cloudflare Pages
+- [ ] Configurar build para Cloudflare Pages
+- [ ] Testar integração MCP com Cloudflare
+- [ ] Preparar variáveis de ambiente para produção
+- [ ] Documentar processo de deploy

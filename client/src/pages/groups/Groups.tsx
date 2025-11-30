@@ -62,11 +62,11 @@ export default function Groups() {
                     <div className="flex items-center justify-between text-sm">
                       <span className="text-muted-foreground">Status</span>
                       <span className={`px-2 py-1 rounded text-xs font-medium ${
-                        group.isActive
+                        group.is_active
                           ? 'bg-green-100 text-green-700'
                           : 'bg-gray-100 text-gray-700'
                       }`}>
-                        {group.isActive ? 'Ativo' : 'Inativo'}
+                        {group.is_active ? 'Ativo' : 'Inativo'}
                       </span>
                     </div>
                     <Button variant="outline" className="w-full">

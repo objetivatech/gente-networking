@@ -58,12 +58,13 @@ O GENTE COMUNIDADE é uma plataforma web desenvolvida para facilitar o gerenciam
 - **Node.js**: Runtime JavaScript
 - **Express**: Framework web
 - **tRPC 11**: Type-safe API
-- **Drizzle ORM**: ORM para MySQL
+- **Supabase Client**: Cliente PostgreSQL type-safe
 - **Zod**: Validação de schemas
 - **SuperJSON**: Serialização de dados
 
 ### Banco de Dados
-- **MySQL/TiDB**: Banco de dados relacional via Supabase
+- **Supabase (PostgreSQL)**: Banco de dados relacional
+- **Supabase Client**: Cliente JavaScript para PostgreSQL
 
 ### Autenticação
 - **Manus OAuth**: Sistema de autenticação integrado
@@ -110,7 +111,7 @@ gente-comunidade/
 ### Pré-requisitos
 - Node.js 22+
 - pnpm
-- Banco de dados MySQL/TiDB (Supabase)
+- Banco de dados Supabase (PostgreSQL)
 
 ### Instalação
 
@@ -118,8 +119,11 @@ gente-comunidade/
 # Instalar dependências
 pnpm install
 
-# Executar migrations
-pnpm db:push
+# Configurar variáveis de ambiente do Supabase
+# (SUPABASE_URL, SUPABASE_ANON_KEY, SUPABASE_SERVICE_KEY)
+
+# Executar schema SQL no Supabase
+# (use o arquivo supabase-schema.sql no SQL Editor do Supabase)
 
 # Iniciar servidor de desenvolvimento
 pnpm dev
@@ -185,11 +189,17 @@ O projeto inclui testes unitários para as principais funcionalidades:
 
 Todos os testes utilizam Vitest e cobrem os cenários principais de uso.
 
-## 📖 Documentação Adicional
+## 📖 Documentação
 
+### Guias de Usuário
+- [Guia do Administrador](docs/GUIA_ADMINISTRADOR.md)
+- [Guia do Facilitador](docs/GUIA_FACILITADOR.md)
+- [Guia do Membro](docs/GUIA_MEMBRO.md)
+
+### Documentação Técnica
+- [Deploy no Cloudflare Pages](docs/DEPLOY_CLOUDFLARE.md)
 - [Especificação Técnica](/home/ubuntu/especificacao_tecnica_gente_comunidade.md)
 - [Análise Visual e Fluxos](/home/ubuntu/analise_visual_fluxos.md)
-- [Pesquisa de Tecnologias](/home/ubuntu/pesquisa_tecnologias.md)
 
 ## 🤝 Contribuindo
 

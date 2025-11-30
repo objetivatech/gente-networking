@@ -146,35 +146,35 @@ export default function Home() {
                   <div className="flex items-center justify-between">
                     <span className="text-sm font-medium">Pontos Totais</span>
                     <span className="text-2xl font-bold text-primary">
-                      {myScore.totalPoints}
+                      {myScore.total_points}
                     </span>
                   </div>
                   <div className="grid grid-cols-2 gap-4">
                     <div>
                       <p className="text-xs text-muted-foreground">Indicações</p>
-                      <p className="text-xl font-semibold">{myScore.referralCount}</p>
+                      <p className="text-xl font-semibold">{myScore.referral_count}</p>
                     </div>
                     <div>
                       <p className="text-xs text-muted-foreground">Negócios</p>
-                      <p className="text-xl font-semibold">{myScore.businessCount}</p>
+                      <p className="text-xl font-semibold">{myScore.business_count}</p>
                     </div>
                     <div>
                       <p className="text-xs text-muted-foreground">Reuniões</p>
-                      <p className="text-xl font-semibold">{myScore.meetingCount}</p>
+                      <p className="text-xl font-semibold">{myScore.meeting_count}</p>
                     </div>
                     <div>
                       <p className="text-xs text-muted-foreground">Depoimentos</p>
-                      <p className="text-xl font-semibold">{myScore.testimonialCount}</p>
+                      <p className="text-xl font-semibold">{myScore.testimonial_count}</p>
                     </div>
                   </div>
-                  {myScore.totalBusinessValue > 0 && (
+                  {myScore.total_business_value > 0 && (
                     <div className="pt-4 border-t">
                       <p className="text-xs text-muted-foreground">Valor em Negócios</p>
                       <p className="text-xl font-semibold text-green-600">
                         {new Intl.NumberFormat('pt-BR', {
                           style: 'currency',
                           currency: 'BRL'
-                        }).format(myScore.totalBusinessValue / 100)}
+                        }).format(myScore.total_business_value / 100)}
                       </p>
                     </div>
                   )}
@@ -212,7 +212,7 @@ export default function Home() {
                       <div className="flex-1 min-w-0">
                         <p className="text-sm font-medium truncate">{member.userName}</p>
                         <p className="text-xs text-muted-foreground">
-                          {member.totalPoints} pontos
+                          {member.total_points} pontos
                         </p>
                       </div>
                       {member.userId === user?.id && (
@@ -268,7 +268,7 @@ export default function Home() {
                           {getActivityLabel(activity.type)}
                         </span>
                         <span className="text-xs text-muted-foreground">
-                          {formatDistanceToNow(new Date(activity.createdAt), {
+                          {formatDistanceToNow(new Date(activity.created_at), {
                             addSuffix: true,
                             locale: ptBR,
                           })}

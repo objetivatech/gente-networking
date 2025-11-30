@@ -109,7 +109,7 @@ export default function Contents() {
                     )}
                     <div className="flex items-center justify-between text-xs text-muted-foreground">
                       <span>
-                        {formatDistanceToNow(new Date(content.createdAt), {
+                        {formatDistanceToNow(new Date(content.created_at), {
                           addSuffix: true,
                           locale: ptBR,
                         })}
