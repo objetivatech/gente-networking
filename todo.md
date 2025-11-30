@@ -93,3 +93,8 @@
 - [ ] Configurar CI/CD
 - [ ] Realizar deploy inicial
 - [ ] Configurar monitoramento
+
+## Correções de Bugs
+- [x] Corrigir erro de aninhamento de tags <a> na página inicial
+- [x] Corrigir queries tRPC retornando HTML em vez de JSON
+- [x] Verificar roteamento do servidor tRPC

@@ -9,10 +9,19 @@ import { formatDistanceToNow } from "date-fns";
 import { ptBR } from "date-fns/locale";
 
 export default function Home() {
-  const { user } = useAuth();
-  const { data: activities, isLoading } = trpc.activities.getRecent.useQuery({ limit: 20 });
-  const { data: leaderboard } = trpc.gamification.getLeaderboard.useQuery({ limit: 5 });
-  const { data: myScore } = trpc.gamification.getUserScore.useQuery({});
+  const { user, isAuthenticated } = useAuth();
+  const { data: activities, isLoading } = trpc.activities.getRecent.useQuery(
+    { limit: 20 },
+    { enabled: isAuthenticated }
+  );
+  const { data: leaderboard } = trpc.gamification.getLeaderboard.useQuery(
+    { limit: 5 },
+    { enabled: isAuthenticated }
+  );
+  const { data: myScore } = trpc.gamification.getUserScore.useQuery(
+    {},
+    { enabled: isAuthenticated }
+  );
 
   const getActivityIcon = (type: string) => {
     switch (type) {
@@ -60,75 +69,67 @@ export default function Home() {
         {/* Quick Actions */}
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
           <Link href="/activities/new?type=referral">
-            <a>
-              <Card className="hover:bg-accent/50 transition-colors cursor-pointer">
-                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium">
-                    Nova Indicação
-                  </CardTitle>
-                  <span className="text-2xl">🤝</span>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-xs text-muted-foreground">
-                    Indicar um contato para outro membro
-                  </p>
-                </CardContent>
-              </Card>
-            </a>
+            <Card className="hover:bg-accent/50 transition-colors cursor-pointer">
+              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                <CardTitle className="text-sm font-medium">
+                  Nova Indicação
+                </CardTitle>
+                <span className="text-2xl">🤝</span>
+              </CardHeader>
+              <CardContent>
+                <p className="text-xs text-muted-foreground">
+                  Indicar um contato para outro membro
+                </p>
+              </CardContent>
+            </Card>
           </Link>
 
           <Link href="/activities/new?type=business">
-            <a>
-              <Card className="hover:bg-accent/50 transition-colors cursor-pointer">
-                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium">
-                    Novo Negócio
-                  </CardTitle>
-                  <span className="text-2xl">💼</span>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-xs text-muted-foreground">
-                    Registrar negócio realizado
-                  </p>
-                </CardContent>
-              </Card>
-            </a>
+            <Card className="hover:bg-accent/50 transition-colors cursor-pointer">
+              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                <CardTitle className="text-sm font-medium">
+                  Novo Negócio
+                </CardTitle>
+                <span className="text-2xl">💼</span>
+              </CardHeader>
+              <CardContent>
+                <p className="text-xs text-muted-foreground">
+                  Registrar negócio realizado
+                </p>
+              </CardContent>
+            </Card>
           </Link>
 
           <Link href="/activities/new?type=meeting">
-            <a>
-              <Card className="hover:bg-accent/50 transition-colors cursor-pointer">
-                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium">
-                    Reunião 1 a 1
-                  </CardTitle>
-                  <span className="text-2xl">☕</span>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-xs text-muted-foreground">
-                    Registrar Gente em Ação
-                  </p>
-                </CardContent>
-              </Card>
-            </a>
+            <Card className="hover:bg-accent/50 transition-colors cursor-pointer">
+              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                <CardTitle className="text-sm font-medium">
+                  Reunião 1 a 1
+                </CardTitle>
+                <span className="text-2xl">☕</span>
+              </CardHeader>
+              <CardContent>
+                <p className="text-xs text-muted-foreground">
+                  Registrar Gente em Ação
+                </p>
+              </CardContent>
+            </Card>
           </Link>
 
           <Link href="/activities/new?type=testimonial">
-            <a>
-              <Card className="hover:bg-accent/50 transition-colors cursor-pointer">
-                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium">
-                    Depoimento
-                  </CardTitle>
-                  <span className="text-2xl">⭐</span>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-xs text-muted-foreground">
-                    Agradecer ou elogiar um membro
-                  </p>
-                </CardContent>
-              </Card>
-            </a>
+            <Card className="hover:bg-accent/50 transition-colors cursor-pointer">
+              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                <CardTitle className="text-sm font-medium">
+                  Depoimento
+                </CardTitle>
+                <span className="text-2xl">⭐</span>
+              </CardHeader>
+              <CardContent>
+                <p className="text-xs text-muted-foreground">
+                  Agradecer ou elogiar um membro
+                </p>
+              </CardContent>
+            </Card>
           </Link>
         </div>
 
