@@ -169,6 +169,20 @@
 - [x] Sistema funcionando e pronto para deploy
 
 ## Correção de Deploy Vercel
-- [ ] Corrigir vercel.json com runtime correto
-- [ ] Fazer commit e push
+- [x] Corrigir vercel.json com runtime correto
+- [x] Fazer commit e push
 - [ ] Validar deploy no Vercel
+
+## Correção de Carregamento no Vercel
+- [ ] Investigar problema de carregamento infinito
+- [ ] Analisar console e erros do navegador
+- [ ] Corrigir problema identificado
+- [ ] Validar correção no Vercel
+
+## Refatoração para Vercel Serverless
+- [ ] Analisar estrutura atual do servidor
+- [ ] Criar adapter para serverless function
+- [ ] Ajustar build para gerar arquivos corretos
+- [ ] Atualizar vercel.json
+- [ ] Testar localmente
+- [ ] Deploy e validação
