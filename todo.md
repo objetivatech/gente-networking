@@ -188,9 +188,12 @@
 - [ ] Deploy e validação
 
 ## Correções Finais de UX e Localização
-- [ ] Analisar e corrigir erro de autenticação (JSON inválido)
+- [x] Analisar e corrigir erro de autenticação (JSON inválido)
+- [x] Adicionar logs detalhados no processo de login
+- [x] Melhorar mensagens de erro em português
+- [x] Validar variáveis de ambiente do Supabase
+- [x] Corrigir função serverless do Vercel (compilar TypeScript)
 - [ ] Traduzir toda interface para PT_BR
-- [ ] Traduzir mensagens de erro para português
 - [ ] Remover tela intermediária de login
 - [ ] Integrar formulário de login na página inicial
-- [ ] Testar login com credenciais de teste
+- [ ] Testar login com credenciais de teste no Vercel
