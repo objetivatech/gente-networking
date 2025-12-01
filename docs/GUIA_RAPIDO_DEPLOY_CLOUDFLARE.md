@@ -24,7 +24,9 @@ Este guia apresenta o passo a passo para fazer deploy da plataforma GENTE COMUNI
 
 ---
 
-## ⚙️ Passo 2: Configurar Build Settings
+## ⚡️ Passo 2: Configurar Build Settings
+
+**Importante:** O projeto já inclui um arquivo `wrangler.jsonc` que configura automaticamente o diretório de output como `dist/public`.
 
 Na tela de configuração do projeto, preencha:
 
@@ -36,7 +38,7 @@ Na tela de configuração do projeto, preencha:
 | **Production branch** | `main` |
 | **Framework preset** | `None` (ou `Vite`) |
 | **Build command** | `pnpm install && pnpm build` |
-| **Build output directory** | `dist` |
+| **Build output directory** | `dist/public` |
 | **Root directory** | `/` |
 
 ### Node.js Version
@@ -215,6 +217,33 @@ Para problemas ou dúvidas:
 - **Documentação Cloudflare Pages:** https://developers.cloudflare.com/pages
 - **Documentação Supabase:** https://supabase.com/docs
 - **Repositório GitHub:** https://github.com/objetivatech/gente-networking
+
+---
+
+## ⚠️ Limitações Importantes
+
+**Este projeto é uma aplicação full-stack com servidor Node.js/Express.** O Cloudflare Pages é otimizado para sites estáticos e pode ter limitações:
+
+1. **Servidor Express não funcionará diretamente** - O Cloudflare Pages serve apenas arquivos estáticos
+2. **APIs tRPC precisam ser adaptadas** - Considere usar Cloudflare Workers ou Functions
+3. **Conexão com banco de dados** - Funciona, mas pode ter limitações de timeout
+
+### Alternativas Recomendadas:
+
+**Opção 1: Deploy Híbrido (Recomendado)**
+- Frontend no Cloudflare Pages
+- Backend em serviço separado (Render, Railway, Fly.io)
+- Configurar CORS entre frontend e backend
+
+**Opção 2: Cloudflare Workers**
+- Migrar o backend Express para Cloudflare Workers
+- Requer adaptação do código do servidor
+- Mais complexo, mas totalmente integrado
+
+**Opção 3: Vercel ou Netlify**
+- Plataformas que suportam full-stack nativamente
+- Deploy mais simples para este tipo de aplicação
+- Suporte a serverless functions
 
 ---
 

@@ -140,3 +140,9 @@
 - [x] Implementar filtros por membro (busca)
 - [x] Mostrar detalhes expandidos de cada atividade
 - [ ] Adicionar paginação (futuro)
+
+## Correção de Deploy Cloudflare
+- [ ] Criar arquivo wrangler.jsonc para configurar deploy
+- [ ] Ajustar build output para Cloudflare Pages
+- [ ] Atualizar documentação de deploy
+- [ ] Testar deploy no Cloudflare Pages
