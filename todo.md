@@ -219,3 +219,9 @@
 - [x] Corrigir export da função api/index.ts para Vercel
 - [x] Reescrever usando fetch adapter em vez de Express
 - [ ] Testar e fazer deploy
+
+## Correção de Erro de Módulo Não Encontrado no Vercel
+- [x] Analisar erro: Cannot find module '/var/task/server/routers'
+- [x] Corrigir imports com extensão .js no api/index.ts
+- [x] Adicionar .js aos imports de routers e context
+- [ ] Testar e fazer deploy

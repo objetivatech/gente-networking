@@ -1,8 +1,8 @@
 // Vercel Serverless Function - tRPC API Handler
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { fetchRequestHandler } from '@trpc/server/adapters/fetch';
-import { appRouter } from '../server/routers';
-import { createContext } from '../server/_core/context';
+import { appRouter } from '../server/routers.js';
+import { createContext } from '../server/_core/context.js';
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   console.log(`[API] ${req.method} ${req.url}`);
