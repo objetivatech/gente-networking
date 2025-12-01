@@ -212,3 +212,10 @@
 - [x] Corrigir sintaxe do runtime no vercel.json
 - [x] Remover configuração incorreta de functions
 - [ ] Testar deploy no Vercel
+
+## Correção de Erro HTTP 500 na API
+- [x] Analisar erro: servidor retorna HTML em vez de JSON
+- [x] Verificar se função serverless está sendo executada corretamente
+- [x] Corrigir export da função api/index.ts para Vercel
+- [x] Reescrever usando fetch adapter em vez de Express
+- [ ] Testar e fazer deploy
