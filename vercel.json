@@ -1,5 +1,4 @@
 {
-  "$schema": "https://openapi.vercel.sh/vercel.json",
   "buildCommand": "pnpm build",
   "devCommand": "pnpm dev",
   "installCommand": "pnpm install",
@@ -13,7 +12,7 @@
   ],
   "functions": {
     "api/index.js": {
-      "runtime": "nodejs22.x",
+      "runtime": "nodejs20.x",
       "maxDuration": 10
     }
   }

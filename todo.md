@@ -167,3 +167,8 @@
 - [x] Atualizar documentação de deploy
 - [x] Atualizar variáveis de ambiente
 - [x] Sistema funcionando e pronto para deploy
+
+## Correção de Deploy Vercel
+- [ ] Corrigir vercel.json com runtime correto
+- [ ] Fazer commit e push
+- [ ] Validar deploy no Vercel
