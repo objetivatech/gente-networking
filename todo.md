@@ -146,3 +146,12 @@
 - [ ] Ajustar build output para Cloudflare Pages
 - [ ] Atualizar documentação de deploy
 - [ ] Testar deploy no Cloudflare Pages
+
+## Preparação para Deploy Vercel
+- [x] Criar vercel.json
+- [x] Criar api/index.js (serverless function)
+- [x] Criar .vercelignore
+- [ ] Criar guia de deploy Vercel
+- [ ] Configurar variáveis de ambiente
+- [ ] Fazer deploy inicial
+- [ ] Testar funcionalidades
