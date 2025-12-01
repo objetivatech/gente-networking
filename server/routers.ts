@@ -1,6 +1,6 @@
-import { COOKIE_NAME } from "@shared/const";
-import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
+import { clearAuthCookies, setAuthCookies } from "./_core/supabase-auth";
+import { supabase } from "./supabase";
 import { publicProcedure, protectedProcedure, router } from "./_core/trpc";
 import { z } from "zod";
 import * as db from "./db";
@@ -27,11 +27,72 @@ export const appRouter = router({
   
   auth: router({
     me: publicProcedure.query(opts => opts.ctx.user),
-    logout: publicProcedure.mutation(({ ctx }) => {
-      const cookieOptions = getSessionCookieOptions(ctx.req);
-      ctx.res.clearCookie(COOKIE_NAME, { ...cookieOptions, maxAge: -1 });
+    
+    register: publicProcedure
+      .input(z.object({
+        email: z.string().email(),
+        password: z.string().min(6),
+        name: z.string().min(2),
+      }))
+      .mutation(async ({ input, ctx }) => {
+        const { data, error } = await supabase.auth.signUp({
+          email: input.email,
+          password: input.password,
+          options: {
+            data: {
+              name: input.name,
+            },
+          },
+        });
+        
+        if (error) {
+          throw new TRPCError({ code: 'BAD_REQUEST', message: error.message });
+        }
+        
+        if (data.session) {
+          setAuthCookies(ctx.res, data.session.access_token, data.session.refresh_token);
+        }
+        
+        return { success: true, user: data.user };
+      }),
+    
+    login: publicProcedure
+      .input(z.object({
+        email: z.string().email(),
+        password: z.string(),
+      }))
+      .mutation(async ({ input, ctx }) => {
+        const { data, error } = await supabase.auth.signInWithPassword({
+          email: input.email,
+          password: input.password,
+        });
+        
+        if (error) {
+          throw new TRPCError({ code: 'UNAUTHORIZED', message: 'Credenciais inválidas' });
+        }
+        
+        setAuthCookies(ctx.res, data.session.access_token, data.session.refresh_token);
+        
+        return { success: true, user: data.user };
+      }),
+    
+    logout: publicProcedure.mutation(async ({ ctx }) => {
+      await supabase.auth.signOut();
+      clearAuthCookies(ctx.res);
       return { success: true } as const;
     }),
+    
+    resetPassword: publicProcedure
+      .input(z.object({ email: z.string().email() }))
+      .mutation(async ({ input }) => {
+        const { error } = await supabase.auth.resetPasswordForEmail(input.email);
+        
+        if (error) {
+          throw new TRPCError({ code: 'BAD_REQUEST', message: error.message });
+        }
+        
+        return { success: true };
+      }),
   }),
 
   // ============ USER & PROFILE ============

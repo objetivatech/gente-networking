@@ -155,3 +155,15 @@
 - [ ] Configurar variáveis de ambiente
 - [ ] Fazer deploy inicial
 - [ ] Testar funcionalidades
+
+## Migração para Supabase Auth
+- [x] Configurar Supabase Auth no banco de dados
+- [x] Reescrever middleware de autenticação
+- [x] Atualizar context.ts para usar Supabase Auth
+- [x] Atualizar routers tRPC (auth.register, auth.login, auth.logout, auth.resetPassword)
+- [x] Criar componentes de login/registro no frontend
+- [x] Atualizar useAuth hook
+- [x] Remover dependências do Manus OAuth
+- [x] Atualizar documentação de deploy
+- [x] Atualizar variáveis de ambiente
+- [x] Sistema funcionando e pronto para deploy

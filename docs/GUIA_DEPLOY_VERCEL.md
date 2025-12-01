@@ -11,7 +11,7 @@
 - ✅ Conta no [Vercel](https://vercel.com) (gratuita)
 - ✅ Repositório GitHub: `objetivatech/gente-networking`
 - ✅ Credenciais do Supabase
-- ✅ Credenciais do Manus OAuth
+- ✅ Supabase Auth configurado
 
 ---
 
@@ -70,27 +70,11 @@ SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsI
 SUPABASE_SERVICE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Indhd25zdXdybnNkZmFvd2ZocWp6Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTczMjg4OTQzNCwiZXhwIjoyMDQ4NDY1NDM0fQ.4JLnWiGHZnxLdZaLKFhxTYRjqRjXPNdVlJQbDPNvMqg
 ```
 
-### Manus OAuth (Obrigatório)
+### Autenticação (Supabase Auth)
 
-**Importante:** Você precisará obter essas credenciais do dashboard do Manus.
+✅ **Não é necessário configurar Manus OAuth!**
 
-```
-JWT_SECRET=sua-chave-secreta-jwt-aqui
-OAUTH_SERVER_URL=https://api.manus.im
-VITE_OAUTH_PORTAL_URL=https://portal.manus.im
-VITE_APP_ID=seu-app-id-aqui
-OWNER_OPEN_ID=seu-open-id-aqui
-OWNER_NAME=Seu Nome Aqui
-```
-
-### Manus Forge API (Obrigatório)
-
-```
-BUILT_IN_FORGE_API_URL=https://api.manus.im
-BUILT_IN_FORGE_API_KEY=sua-chave-api-aqui
-VITE_FRONTEND_FORGE_API_URL=https://api.manus.im
-VITE_FRONTEND_FORGE_API_KEY=sua-chave-frontend-aqui
-```
+A autenticação agora é gerenciada pelo **Supabase Auth**. As credenciais do Supabase já foram configuradas acima.
 
 ### Aplicação (Obrigatório)
 
@@ -159,8 +143,8 @@ https://gente-networking.vercel.app
    - Deve carregar a tela de login
 
 2. **Autenticação**
-   - Clique em "Sign in"
-   - Faça login com sua conta Manus
+   - Clique em "Entrar" ou "Registre-se"
+   - Faça login com email/senha
    - Deve redirecionar para o dashboard
 
 3. **Dashboard**
@@ -226,14 +210,14 @@ O Vercel provisiona o certificado SSL automaticamente em 1-5 minutos.
    https://seu-dominio-customizado.com.br
    ```
 
-### Configurar Redirect URLs no Manus OAuth
+### Configurar Redirect URLs no Supabase
 
-1. Acesse o Dashboard do Manus
-2. Vá em **OAuth Applications**
+1. Acesse o [Dashboard do Supabase](https://supabase.com/dashboard)
+2. Vá em **Authentication** → **URL Configuration**
 3. Adicione as URLs de callback:
    ```
-   https://gente-networking.vercel.app/api/oauth/callback
-   https://seu-dominio-customizado.com.br/api/oauth/callback
+   https://gente-networking.vercel.app/auth/callback
+   https://seu-dominio-customizado.com.br/auth/callback
    ```
 
 ---
@@ -293,12 +277,12 @@ Cada Pull Request gera um deploy de preview automático:
 2. Adicione índices no Supabase
 3. Considere upgrade para Vercel Pro (60s timeout)
 
-### OAuth Não Funciona
+### Login Não Funciona
 
 **Soluções:**
-1. Verifique se as redirect URLs estão configuradas no Manus
-2. Confirme que `VITE_APP_ID` e `OAUTH_SERVER_URL` estão corretas
-3. Verifique se `JWT_SECRET` está configurado
+1. Verifique se as redirect URLs estão configuradas no Supabase
+2. Confirme que `SUPABASE_URL` e `SUPABASE_ANON_KEY` estão corretas
+3. Verifique se o usuário confirmou o email (se obrigatório)
 
 ---
 

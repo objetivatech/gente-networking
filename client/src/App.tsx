@@ -11,10 +11,12 @@ import Groups from "./pages/groups/Groups";
 import Meetings from "./pages/meetings/Meetings";
 import Contents from "./pages/contents/Contents";
 import Leaderboard from "./pages/leaderboard/Leaderboard";
+import Auth from "./pages/Auth";
 
 function Router() {
   return (
     <Switch>
+      <Route path={"/auth"} component={Auth} />
       <Route path={"/"} component={Home} />
       <Route path={"/activities"} component={Activities} />
       <Route path={"/activities/new"} component={NewActivity} />
