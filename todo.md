@@ -186,3 +186,11 @@
 - [ ] Atualizar vercel.json
 - [ ] Testar localmente
 - [ ] Deploy e validação
+
+## Correções Finais de UX e Localização
+- [ ] Analisar e corrigir erro de autenticação (JSON inválido)
+- [ ] Traduzir toda interface para PT_BR
+- [ ] Traduzir mensagens de erro para português
+- [ ] Remover tela intermediária de login
+- [ ] Integrar formulário de login na página inicial
+- [ ] Testar login com credenciais de teste

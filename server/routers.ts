@@ -62,18 +62,44 @@ export const appRouter = router({
         password: z.string(),
       }))
       .mutation(async ({ input, ctx }) => {
-        const { data, error } = await supabase.auth.signInWithPassword({
-          email: input.email,
-          password: input.password,
-        });
-        
-        if (error) {
-          throw new TRPCError({ code: 'UNAUTHORIZED', message: 'Credenciais inválidas' });
+        try {
+          console.log('[Login] Tentando login para:', input.email);
+          
+          const { data, error } = await supabase.auth.signInWithPassword({
+            email: input.email,
+            password: input.password,
+          });
+          
+          if (error) {
+            console.error('[Login] Erro do Supabase:', error);
+            throw new TRPCError({ 
+              code: 'UNAUTHORIZED', 
+              message: 'Credenciais inválidas. Verifique seu email e senha.' 
+            });
+          }
+          
+          if (!data.session) {
+            console.error('[Login] Sem sessão retornada');
+            throw new TRPCError({ 
+              code: 'UNAUTHORIZED', 
+              message: 'Erro ao criar sessão. Tente novamente.' 
+            });
+          }
+          
+          console.log('[Login] Login bem-sucedido para:', input.email);
+          setAuthCookies(ctx.res, data.session.access_token, data.session.refresh_token);
+          
+          return { success: true, user: data.user };
+        } catch (error) {
+          console.error('[Login] Erro inesperado:', error);
+          if (error instanceof TRPCError) {
+            throw error;
+          }
+          throw new TRPCError({ 
+            code: 'INTERNAL_SERVER_ERROR', 
+            message: 'Erro ao processar login. Tente novamente.' 
+          });
         }
-        
-        setAuthCookies(ctx.res, data.session.access_token, data.session.refresh_token);
-        
-        return { success: true, user: data.user };
       }),
     
     logout: publicProcedure.mutation(async ({ ctx }) => {
