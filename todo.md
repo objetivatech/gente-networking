@@ -193,7 +193,9 @@
 - [x] Melhorar mensagens de erro em português
 - [x] Validar variáveis de ambiente do Supabase
 - [x] Corrigir função serverless do Vercel (compilar TypeScript)
-- [ ] Traduzir toda interface para PT_BR
-- [ ] Remover tela intermediária de login
-- [ ] Integrar formulário de login na página inicial
+- [x] Traduzir toda interface para PT_BR
+- [x] Remover tela intermediária de login (redirecionamento direto)
+- [x] Traduzir página NotFound para português
+- [x] Traduzir ErrorBoundary para português
 - [ ] Testar login com credenciais de teste no Vercel
+- [ ] Validar todas as funcionalidades após redeploy
