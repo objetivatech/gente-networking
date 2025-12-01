@@ -11,3 +11,4 @@ dist/index.js.map
 server/**/*.test.ts
 *.test.ts
 vitest.config.ts
+api/index.ts

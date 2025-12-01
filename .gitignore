@@ -105,3 +105,6 @@ temp/
 *.db
 *.sqlite
 *.sqlite3
+
+# Vercel serverless function (source file - only compiled version is needed)
+api/index.ts
