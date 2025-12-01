@@ -207,3 +207,8 @@
 - [x] Atualizar vercel.json com runtime Node.js para funções TypeScript
 - [x] Testar build localmente
 - [ ] Fazer redeploy no Vercel
+
+## Correção de Sintaxe do vercel.json
+- [x] Corrigir sintaxe do runtime no vercel.json
+- [x] Remover configuração incorreta de functions
+- [ ] Testar deploy no Vercel
