@@ -199,3 +199,11 @@
 - [x] Traduzir ErrorBoundary para português
 - [ ] Testar login com credenciais de teste no Vercel
 - [ ] Validar todas as funcionalidades após redeploy
+
+## Correção de Build no Vercel
+- [x] Analisar erro "The entry point 'api/index.ts' cannot be marked as external"
+- [x] Corrigir configuração do esbuild no package.json
+- [x] Simplificar build (apenas vite build, Vercel compila TypeScript)
+- [x] Atualizar vercel.json com runtime Node.js para funções TypeScript
+- [x] Testar build localmente
+- [ ] Fazer redeploy no Vercel

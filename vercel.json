@@ -4,10 +4,15 @@
   "installCommand": "pnpm install",
   "framework": null,
   "outputDirectory": "dist/public",
+  "functions": {
+    "api/*.ts": {
+      "runtime": "nodejs20.x"
+    }
+  },
   "rewrites": [
     {
       "source": "/api/trpc/:path*",
-      "destination": "/api"
+      "destination": "/api/index"
     },
     {
       "source": "/(.*)",
