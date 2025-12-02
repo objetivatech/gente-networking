@@ -224,4 +224,11 @@
 - [x] Analisar erro: Cannot find module '/var/task/server/routers'
 - [x] Corrigir imports com extensão .js no api/index.ts
 - [x] Adicionar .js aos imports de routers e context
+- [x] Identificar novos erros de TypeScript no build
+
+## Correção de Erros de TypeScript e Dependências
+- [x] Adicionar @vercel/node às dependências
+- [x] Reescrever função serverless sem depender de Express context
+- [x] Simplificar createContext para não depender de Express
+- [x] Adicionar extensão .js a TODOS os imports relativos (19 arquivos)
 - [ ] Testar e fazer deploy

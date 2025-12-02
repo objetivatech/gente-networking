@@ -1,6 +1,6 @@
 import type { CreateExpressContextOptions } from "@trpc/server/adapters/express";
-import type { User } from "../db";
-import { getUserFromRequest } from "./supabase-auth";
+import type { User } from "../db.js";
+import { getUserFromRequest } from "./supabase-auth.js";
 
 export type TrpcContext = {
   req: CreateExpressContextOptions["req"];

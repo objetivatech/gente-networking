@@ -1,9 +1,9 @@
-import { systemRouter } from "./_core/systemRouter";
-import { clearAuthCookies, setAuthCookies } from "./_core/supabase-auth";
-import { supabase } from "./supabase";
-import { publicProcedure, protectedProcedure, router } from "./_core/trpc";
+import { systemRouter } from "./_core/systemRouter.js";
+import { clearAuthCookies, setAuthCookies } from "./_core/supabase-auth.js";
+import { supabase } from "./supabase.js";
+import { publicProcedure, protectedProcedure, router } from "./_core/trpc.js";
 import { z } from "zod";
-import * as db from "./db";
+import * as db from "./db.js";
 import { TRPCError } from "@trpc/server";
 
 // Helper to check if user has admin role

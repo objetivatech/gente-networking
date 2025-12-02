@@ -4,8 +4,8 @@
  */
 
 import { Request, Response } from 'express';
-import { supabase } from '../supabase';
-import { User } from '../db';
+import { supabase } from '../supabase.js';
+import { User } from '../db.js';
 
 /**
  * Extract user from Supabase session
